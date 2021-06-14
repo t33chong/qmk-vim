@@ -79,6 +79,7 @@ bool process_vim_mode(uint16_t keycode, const keyrecord_t *record) {
         bool do_process_key = process_func(keycode, record);
 
 #ifdef VIM_DOT_REPEAT
+        /* if (!record->event.pressed) */
         if (record->event.pressed)
             add_repeat_keycode(keycode);
 #endif

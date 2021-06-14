@@ -204,12 +204,12 @@ bool process_normal_mode(uint16_t keycode, const keyrecord_t *record) {
                 NO_RECORD_ACTION();
                 break;
 #endif
-#ifdef VIM_DOT_REPEAT
-            case KC_DOT:
-                repeat_action(record);
-                NO_RECORD_ACTION();
-                break;
-#endif
+/* #ifdef VIM_DOT_REPEAT */
+/*             case KC_DOT: */
+/*                 repeat_action(record); */
+/*                 NO_RECORD_ACTION(); */
+/*                 break; */
+/* #endif */
             default:
                 NO_RECORD_ACTION();
                 if (keycode >= QK_MODS && (keycode & 0xFF00) != QK_LSFT) {
@@ -221,6 +221,16 @@ bool process_normal_mode(uint16_t keycode, const keyrecord_t *record) {
         if (should_record_action) {
             start_recording_repeat();
         }
+#endif
+#ifdef VIM_DOT_REPEAT
+    } else {
+        if (keycode == KC_DOT) {
+            repeat_action(record);
+            NO_RECORD_ACTION();
+        }
+        /* if (should_record_action) { */
+        /*     start_recording_repeat(); */
+        /* } */
 #endif
     }
     return false;

@@ -56,6 +56,7 @@ bool process_motions(uint16_t keycode, const keyrecord_t *record, uint16_t qk_mo
         case VIM_W:
         case LSFT(KC_W):
             set_visual_direction(V_FORWARD);
+            /* register_motion(qk_mods | VIM_W, record); */
             if (record->event.pressed) {
               register_code16(qk_mods | VIM_W);
             } else {
